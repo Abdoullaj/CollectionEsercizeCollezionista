@@ -1,19 +1,19 @@
 package collezionistaClassi;
 
-import java.util.HashMap;
 
 public class Cd extends Archiviazione{
 
 	public Cd() {
-		listaFilm = new HashMap<String, Film  >();
+		super();
 	}
 	
-	public void supporto(Creazione creazione) {
-		int flag = 0;
-		if(creazione instanceof Album ) {
-			listaFilm.put(creazione.getDettagli().getTitolo() , creazione);
-		}
+	public boolean supporto(Creazione creazione) {
 		
+		if(creazione instanceof Album ) {
+			disco.put((String)creazione.getDettagli().get("titolo") , creazione);
+			return true;
+			}
+		return false;
 	}
 	
 }

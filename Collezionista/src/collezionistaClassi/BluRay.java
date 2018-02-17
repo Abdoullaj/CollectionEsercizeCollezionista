@@ -1,22 +1,20 @@
 package collezionistaClassi;
 
-import java.util.HashMap;
 
 public class BluRay extends Archiviazione{
 	
 	String [] supportiConsentiti;
 	
 	public BluRay() {
-		listaFilm = new HashMap<String, Film  >();
+		super();
 	}
 	
-	
-	public void supporto(Creazione creazione) {
-		int flag = 0;
+	public boolean supporto(Creazione creazione) {
 		if(creazione instanceof Film ) {
-			listaFilm.put(creazione.getDettagli().getTitolo() , creazione);
-		}
-		
+			disco.put((String)creazione.getDettagli().get("titolo") , creazione);
+			return true;
+			}
+		return false;
 	}
 
 

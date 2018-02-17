@@ -26,7 +26,6 @@ public abstract class Creazione {
 		
 		dettagli.put("titolo", titolo);
 		dettagli.put("anno", anno);
-		
 		listaDettagli.put("genere", listaGenere);
 		listaDettagli.put("supporto", listaSupporto);
 	}
