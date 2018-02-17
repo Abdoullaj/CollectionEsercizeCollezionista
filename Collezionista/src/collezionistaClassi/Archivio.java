@@ -20,23 +20,50 @@ public class Archivio {
 	HashMap<String, Album> listaAlbum;
 	Collection <Album> listaAlbumCercata ;
 	String [] listaTitoliAlbum = new String [20];
-	int numeroAlbumggiunti = 0;
+	int numeroAlbumAggiunti = 0;
 	
+	HashMap<String, HashMap> archivio;
 	public Archivio () {
+		
 		listaFilm = new HashMap<String, Film>();
 		listaFilmCercata = new HashSet<Film>();
+		
+		archivio = new HashMap<String, HashMap>();
+		archivio.put("film", listaFilm);
+		archivio.put("album", listaAlbum);
 	}
 	
-	public void aggiungiFilm(Film film) {
-		listaFilm.put((String)film.getDettagli().get("titolo"), film);
-		listaTitoliFilm[numeroFilmAggiunti] = (String)film.getDettagli().get("titolo");
+	public void aggiungiCreazione(Creazione creazione) {
+		String titolo = (String) creazione.getDettagli().get("titolo");
+		if (creazione instanceof Film) {
+			Film film = (Film) creazione;
+		listaFilm.put(titolo, film);
+		listaTitoliFilm[numeroFilmAggiunti] = titolo;
 		numeroFilmAggiunti++;
+		}
+		
+		if (creazione instanceof Album) {
+			Album album = (Album) creazione;
+			listaAlbum.put(titolo, album);
+			listaTitoliAlbum[numeroAlbumAggiunti] = titolo;
+			numeroAlbumAggiunti++;
+		}
+		
 	}
 	
 	public HashMap getMapFilm () {
 		return listaFilm;
 	}
+	
 	public Collection getListaFilmCercata() {
+		return listaFilmCercata;
+	}
+	
+	public HashMap getMapAlbum() {
+		return listaFilm;
+	}
+	
+	public Collection getListaAlbumCercata() {
 		return listaFilmCercata;
 	}
 	
